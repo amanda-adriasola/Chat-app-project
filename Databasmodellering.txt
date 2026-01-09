@@ -1,0 +1,28 @@
+Databasmodellering - Chattapplikation
+
+Konceptuell Modell
+Entities: User, Message, Comment (Ny), Tag (Ny)
+Attributes:
+  User: id, username, password, profile_image, description
+  Message: id, text, timestamp
+  Comment: id, text, timestamp
+  Tag: id, name
+Relationships:
+  User - Message (1:N)
+  User - Comment (1:N)
+  Message - Comment (1:N)
+  Message - Tag (N:M)
+
+Logisk Modell
+Users (PK id, username, password, profile_image, description)
+Messages (PK id, user_id (FK), text, timestamp)
+Comments (PK id, message_id (FK), user_id (FK), text, timestamp)
+Tags (PK id, name)
+Message_Tags (PK message_id, tag_id) -- Junction table
+
+Fysisk Modell (SQL)
+CREATE TABLE Users ...
+CREATE TABLE Messages ...
+CREATE TABLE Comments ...
+CREATE TABLE Tags ...
+CREATE TABLE Message_Tags ...
